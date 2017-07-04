@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          <title>Ecommerce</title>
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+          <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+          <script src="https://unpkg.com/vue"></script>
+          <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+
+          <style>
+               .carousel-inner .item img{
+                    height: 450px;
+               }
+               .col-md-3 .thumbnail img {
+                    height: 155px;
+               }
+               #footer {
+                    background-image: url('img/baground-footer.jpg');
+               }
+
+               .badge-notify{
+                 background:red;
+                 position:relative;
+                 top: -12px;
+                 right: 15px;
+               }
+               .badge {
+                   background:red;
+               }
+
+          </style>
+
+     </head>
+     <body>
+          <div id="app" class="container">
+               <nav class="navbar navbar-default navbar-fixed-top"  >
+                  <div class="container">
+
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                      </button>
+                      <a class="navbar-brand" href="index.html">E-Commerce</a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                      <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
+
+                        <li class="dropdown">
+                          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Kategory
+                          <span class="caret"></span></a>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Handphone</a></li>
+                            <li><a href="#">Camera</a></li>
+                            <li><a href="#">Laptop</a></li>
+                          </ul>
+                        </li>
+
+                      </ul>
+                      <form class="navbar-form navbar-left" action="#" >
+                        <div class="form-group" width="100%" height="25px" >
+                          <input type="text" class="form-control" name="key" placeholder="Search Product" size="55%" v-model="search">
+                          <button class="btn btn-default" type="submit">
+                            <i class="glyphicon glyphicon-search"></i>
+                          </button>
+                        </div>
+                      </form>
+
+
+                      <ul class="nav navbar-nav navbar-right">
+                       <li><a href="create_product.html" target="_blank"><span class="glyphicon glyphicon-plus"></span>Product </a></li>
+                       <li><a href="register.html" target="_blank"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                       <li><a href="register.html" target="_blank"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                       <li><a href="#" data-toggle="modal" data-target="#myModal"><i class="material-icons">Cart</i><span class="badge">{{count}}</span></a></li>
+                       <!-- <li>
+                             <h4>
+                               <div style="float: right; cursor: pointer;">
+                                 <span class="glyphicon glyphicon-shopping-cart my-cart-icon"><span class="badge badge-notify my-cart-badge"></span></span>
+                               </div>
+                              </h4>
+                       </li> -->
+                     </ul>
+
+                    </div><!-- /.navbar-collapse -->
+                  </div><!-- /.container-fluid -->
+               </nav>
+               <br>
+               <br>
+               <br>
+               <br>
+
+               <!-- Carousel Example -->
+               <div class="row">
+                    <div class="col-md-9" >
+                           <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                             <!-- Indicators -->
+                             <ol class="carousel-indicators">
+                               <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                               <li data-target="#myCarousel" data-slide-to="1"></li>
+                               <li data-target="#myCarousel" data-slide-to="2"></li>
+                             </ol>
+
+                             <!-- Wrapper for slides -->
+                             <div class="carousel-inner">
+                               <div class="item active">
+                                 <img src="img/bhineka1.jpg" alt="Los Angeles" height="800px">
+                               </div>
+
+                               <div class="item">
+                                 <img src="img/acerid-2.png" alt="Chicago" >
+                               </div>
+
+                               <div class="item">
+                                 <img src="img/acerid-3.png" alt="New york" >
+                               </div>
+                             </div>
+
+                             <!-- Left and right controls -->
+                             <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                               <span class="glyphicon glyphicon-chevron-left"></span>
+                               <span class="sr-only">Previous</span>
+                             </a>
+                             <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                               <span class="glyphicon glyphicon-chevron-right"></span>
+                               <span class="sr-only">Next</span>
+                             </a>
+                           </div>
+
+                    </div>
+
+                    <!-- Col right bar -->
+                    <div class="col-md-3">
+                         <div class="thumbnail">
+                          <a href="/index.html" target="_blank">
+                            <img src="img/samsung1.jpg" alt="Lights" style="width:100%">
+                            <div class="caption">
+                              <p align="center">New Item</p>
+                            </div>
+                          </a>
+                        </div>
+
+                        <div class="thumbnail">
+                        <a href="/index.html" target="_blank">
+                          <img src="img/samsung2.jpg" alt="Lights" style="width:100%">
+                          <div class="caption">
+                             <p align="center">New Product</p>
+                          </div>
+                        </a>
+                      </div>
+
+                    </div>
+
+               </div>
+                 <!-- End of Carousel -->
+                 <br>
+                 <br>
+               <!-- thumbnail -->
+               <div class="row">
+                 <div class="col-sm-6 col-md-4" v-for="item in filterProducts" >
+                   <div class="thumbnail" >
+                     <img :src=" item.img_url " alt="...">
+                     <div class="caption">
+                       <h3 align="center"> {{ item.name | to-uppercase }} </h3>
+
+                       <!-- <button type="button" name="button" @click="getItemProduct()">Get Item</button> -->
+                       <p>{{ item.description }}</p>
+                       <h3>Rp. {{ item.price }}</h3>
+                       <button class="btn btn-danger my-cart-btn" data-id="1" data-name="product 1" data-summary="summary 1" data-price="10" data-quantity="1" data-image="img/img_1.png" v-on:click="addToCart(item)">Add to Cart</button>
+                       <button class="btn btn-primary" type="button" name="button" ><a v-bind:href="link" target="_blank" style="color:white">Detail</a></button>
+                       <!-- <button class="btn btn-danger my-cart-btn" data-id="1" data-name="product 1" data-summary="summary 1" data-price="10" data-quantity="1" data-image="img/img_1.png" >Detail</button> -->
+
+                     </div>
+                   </div>
+                 </div>
+
+                 <!-- Modal -->
+                <div id="myModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Keranjang Belanja</h4>
+                  </div>
+                        <table id="cart" class="table table-hover table-condensed">
+                        <thead>
+                        <tr>
+                          <th style="width:50%">Product</th>
+                          <th style="width:10%">Price</th>
+                          <th style="width:8%">Quantity</th>
+                          <th style="width:22%" class="text-center">Subtotal</th>
+                          <th style="width:10%"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr v-for="cart in carts">
+                          <td data-th="Product" >
+                            <div class="row">
+                              <div class="col-sm-3 hidden-xs"><img v-bind:src= "cart.img_url" alt="..." class="img-responsive" style=" height: 50px; width: 50px;" /></div>
+                              <div class="col-sm-7">
+                                <h5 class="nomargin">{{cart.name}}</h5>
+                              </div>
+                            </div>
+                          </td>
+                          <td data-th="Price">{{cart.price}}</td>
+                          <td data-th="Quantity">
+                            <input type="text" class="form-control text-center" v-model="cart.jumlah" readonly>
+                          </td>
+                          <td data-th="Subtotal" class="text-center">{{cart.subtotal}}</td>
+                          <td class="actions" data-th="">
+                            <button class="btn btn-danger btn-sm" >Delete<i class="fa fa-trash-o"></i></button>
+                          </td>
+                        </tr>
+                      </tbody>
+                      <tfoot>
+                        <tr class="visible-xs">
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td colspan="2" class="hidden-xs"></td>
+                          <td class="hidden-xs text-center"><strong>Total RP {{total}}</strong></td>
+                          <td><a href="#" class="btn btn-success btn-block" v-on:click="checkout()">Checkout <i class="fa fa-angle-right"></i></a></td>
+                        </tr>
+                      </tfoot>
+                    </table>
+                    </div>
+                  </div>
+                </div>
+
+
+            </div>
+            <!-- End off thumbnail -->
+
+            <!-- Footer -->
+            <div id="footer">
+               <div class="container">
+                    <div class="row">
+                        <h3 class="footertext">About Us:</h3>
+                        <br>
+                         <div class="col-md-4">
+                            <center>
+                              <img src="http://oi60.tinypic.com/w8lycl.jpg" class="img-circle" alt="the-brains">
+                              <br>
+                              <h4 class="footertext">Programmer</h4>
+                              <p class="footertext">You can thank all the crazy programming here to this guy.<br>
+                            </center>
+                         </div>
+                         <div class="col-md-4">
+                            <center>
+                              <img src="http://oi60.tinypic.com/2z7enpc.jpg" class="img-circle" alt="...">
+                              <br>
+                              <h4 class="footertext">Artist</h4>
+                              <p class="footertext">All the images here are hand drawn by this man.<br>
+                            </center>
+                         </div>
+                         <div class="col-md-4">
+                            <center>
+                              <img src="http://oi61.tinypic.com/307n6ux.jpg" class="img-circle" alt="...">
+                              <br>
+                              <h4 class="footertext">Designer</h4>
+                              <p class="footertext">This pretty site and the copy it holds are all thanks to this guy.<br>
+                            </center>
+                         </div>
+                        </div>
+                        <div class="row">
+                        <p><center><a href="#">Contact Stuff Here</a> <p class="footertext">Copyright 2014</p></center></p>
+                    </div>
+               </div>
+          </div>  <!-- End of Footer -->
+
+
+       </div>
+
+       <script src="js/jquery-2.2.3.min.js"></script>
+       <script type='text/javascript' src="js/bootstrap.min.js"></script>
+       <script type='text/javascript' src="js/jquery.mycart.js"></script>
+
+     <!-- <script type="text/javascript">
+          $( document ).ready(function() {
+               var goToCartIcon = function($addTocartBtn){
+                 var $cartIcon = $(".my-cart-icon");
+                 var $image = $('<img width="30px" height="30px" src="' + $addTocartBtn.data("image") + '"/>').css({"position": "fixed", "z-index": "999"});
+                 $addTocartBtn.prepend($image);
+                 var position = $cartIcon.position();
+                 $image.animate({
+                   top: position.top,
+                   left: position.left
+              }, 2000 , "linear", function() {
+                   $image.remove();
+                 });
+               }
+
+               $('.my-cart-btn').myCart({
+                 currencySymbol: '$',
+                 classCartIcon: 'my-cart-icon',
+                 classCartBadge: 'my-cart-badge',
+                 classProductQuantity: 'my-product-quantity',
+                 classProductRemove: 'my-product-remove',
+                 classCheckoutCart: 'my-cart-checkout',
+                 affixCartIcon: true,
+                 showCheckoutModal: true,
+                 numberOfDecimals: 2,
+                 cartItems: [
+                   {id: 1, name: 'product 1', summary: 'summary 1', price: 10, quantity: 1, image: 'img/img_1.png'},
+                   {id: 2, name: 'product 2', summary: 'summary 2', price: 20, quantity: 1, image: 'img/img_2.png'},
+                   {id: 3, name: 'product 3', summary: 'summary 3', price: 30, quantity: 1, image: 'img/img_3.png'}
+                 ],
+                 clickOnAddToCart: function($addTocart){
+                   goToCartIcon($addTocart);
+                 },
+                 afterAddOnCart: function(products, totalPrice, totalQuantity) {
+                   console.log("afterAddOnCart", products, totalPrice, totalQuantity);
+                 },
+                 clickOnCartIcon: function($cartIcon, products, totalPrice, totalQuantity) {
+                   console.log("cart icon clicked", $cartIcon, products, totalPrice, totalQuantity);
+                 },
+                 checkoutCart: function(products, totalPrice, totalQuantity) {
+                   var checkoutString = "Total Price: " + totalPrice + "\nTotal Quantity: " + totalQuantity;
+                   checkoutString += "\n\n id \t name \t summary \t price \t quantity \t image path";
+                   $.each(products, function(){
+                     checkoutString += ("\n " + this.id + " \t " + this.name + " \t " + this.summary + " \t " + this.price + " \t " + this.quantity + " \t " + this.image);
+                   });
+                   alert(checkoutString)
+                   console.log("checking out", products, totalPrice, totalQuantity);
+                 },
+                 getDiscountPrice: function(products, totalPrice, totalQuantity) {
+                   console.log("calculating discount", products, totalPrice, totalQuantity);
+                   return totalPrice * 0.05;
+                 }
+               });
+          });
+     </script> -->
+
+     <script>
+     var app = new Vue({
+               el: '#app',
+               data: {
+                    count : 0,
+                    carts :[],
+                    items : [],
+                    total: 0,
+                    tambahCart : [],
+                    search : ''
+               },
+               computed : {
+                    filterProducts : function(){
+                         return this.items.filter((item) => {
+                              return item.name.match(this.search)
+                         })
+                    }
+               },
+               methods : {
+                    getItemProduct () {
+                         var self = this
+                         axios.get('http://localhost:3000/items')
+                         .then(function(response) {
+                              console.log(response);
+                              self.items = response.data
+
+                         })
+                         .catch((err) => {
+                              console.log(err);
+                         })
+                    },
+                    addToCart : function(item){
+                      var self=this
+                      var index = this.carts.findIndex(carts=>carts._id == item._id)
+                       if(index!=-1){
+                          this.count++
+                          let newCart = this.carts[index]
+                          newCart['jumlah']+=1
+                          newCart.subtotal = newCart.jumlah * newCart.price
+                          this.carts.splice(index, 1, newCart)
+                        } else {
+                            item['jumlah'] = 1;
+                            item['subtotal'] = item.jumlah * item.price
+                            this.carts.push(item)
+                            this.count++
+                        }
+                        var total_price = 0
+                        this.carts.forEach(cart=>{
+                          total_price+=cart.subtotal;
+                        })
+                        self.total = total_price
+                   },
+                   checkout:function(){
+                     let self = this
+                     axios.post('http://localhost:3000/carts', {
+                       invoice: self.invoice,
+                       customer_id : '595b5b2b022752040def0772',
+                       list_item: self.list_item
+                     })
+                     .then(function(response){
+                       console.log(response)
+                       alert('Berhasil Checkout, Silahkan Cek Email Anda untuk Detail Pembayaran')
+                       self.tambahCart.push(response.data)
+                       location.reload()
+                     })
+                     .catch(function(err){
+                       console.log(err);
+                     })
+                   }
+               },
+               created () {
+                    this.getItemProduct()
+               }
+          })
+
+     </script>
+
+     </body>
+</html>
