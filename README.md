@@ -7,7 +7,6 @@ $ npm install
 $ npm start
 ```
 
-## REST API
 
 #### Items
 | Route        | Http           | Descriptin  |
